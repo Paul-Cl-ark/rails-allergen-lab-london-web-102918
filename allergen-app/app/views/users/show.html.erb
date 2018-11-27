@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1><%= @user.name %></h1>
+    <h4><%= @user.name %>'s Recipes:</h4>
+    <ul>
+      <% if @user.allergens.length == 0 %>
+        <p><%= @user.name %> has no recipes yet...</p>
+      <% else %>
+        <% @user.recipes.each do |r| %>
+        <li><%= link_to r.name, recipe_path(r) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <h4><%= @user.name %>'s Allergens:</h4>
+    <ul>
+      <% if @user.allergens.length == 0 %>
+      <p><%= @user.name %> hasn't listed any allergies...</p>
+      <% else %>
+        <% @user.ingredients.each do |i| %>
+        <li><%= link_to i.name, ingredient_path(i) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <%= form_tag user_path(@user.id), method: "delete" do %>
+    <%= submit_tag "Delete #{@user.name}" %>
+    <% end %>
+
+  </body>
+</html>

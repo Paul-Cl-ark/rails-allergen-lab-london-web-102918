@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Ingredients</h1>
+
+    <p>Sorted by most to least user allergies</p>
+    <ul>
+      <% @ordered_ingredients.each do |i| %>
+      <li><%= link_to i.name, ingredient_path(i) %></li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1><%= @recipe.name %></h1>
+    <h4>A recipe by <%= link_to @recipe.user.name, user_path(@recipe.user) %></h4>
+    <p>You will need:</p>
+    <% @recipe.ingredients.each do |i| %>
+    <ul>
+      <li> <%= i.name %> </li>
+    </ul>
+    <% end %>
+
+  </body>
+</html>

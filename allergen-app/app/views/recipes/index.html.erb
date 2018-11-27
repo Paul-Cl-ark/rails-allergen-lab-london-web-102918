@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Recipes</h1>
+
+    <p><%=link_to "Create a New Recipe", new_recipe_path %><p>
+
+    <h3>Order by numer of ingredients:</h3>
+    <%= form_tag('/recipes', method: 'get') do %>
+      Ascending: <%= check_box_tag('order[ascending]')  %>
+      Descending: <%= check_box_tag('order[descending]')  %>
+      <%= submit_tag %>
+    <% end %>
+
+    <br>
+    <h4>All recipes:</h4>
+    <ul>
+      <% @recipes.each do |r| %>
+      <li> <%= link_to r.name, recipe_path(r) %> - <%= link_to r.user.name, user_path(r.user) %>  </li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>
